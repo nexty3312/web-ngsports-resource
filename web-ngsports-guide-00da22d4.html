@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识库入口 · ng体育 平台说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f7fb;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #132b44 100%);
+            color: #eaf0f8;
+            padding: 4rem 1.5rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #f5f7fb;
+            clip-path: ellipse(60% 100% at 50% 100%);
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 680px;
+            margin: 0 auto;
+            opacity: 0.85;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.2rem;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 40px;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            color: #b6d0e8;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1120px;
+            margin: -2rem auto 0;
+            padding: 0 1.5rem 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 说明区 —— 知识库目录感布局 */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 3.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 3px rgba(0,20,40,0.05);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0,20,40,0.08);
+        }
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            border-left: 4px solid #2e6f9b;
+            padding-left: 0.75rem;
+        }
+        .card p {
+            font-size: 0.98rem;
+            color: #2e3b4e;
+            margin-bottom: 0.4rem;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.6rem;
+        }
+        .card li {
+            padding: 0.25rem 0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        .card li::before {
+            content: '•';
+            color: #2e6f9b;
+            font-weight: 700;
+        }
+        .tag {
+            display: inline-block;
+            background: #eef3f9;
+            border-radius: 30px;
+            padding: 0.15rem 1rem;
+            font-size: 0.75rem;
+            color: #1f4b70;
+            margin-top: 0.2rem;
+        }
+
+        /* 提示区 */
+        .notice-zone {
+            background: #e8f0fa;
+            border-radius: 24px;
+            padding: 1.8rem 2.2rem;
+            margin-bottom: 2.8rem;
+            border: 1px solid rgba(46, 111, 155, 0.15);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.2rem 2.5rem;
+        }
+        .notice-zone .icon-symbol {
+            font-size: 2rem;
+            line-height: 1;
+            opacity: 0.7;
+            color: #1f4b70;
+        }
+        .notice-zone .notice-content {
+            flex: 1;
+            min-width: 200px;
+        }
+        .notice-zone .notice-content strong {
+            color: #0a1e31;
+        }
+        .notice-zone .notice-content a {
+            color: #1a6b9c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #1a6b9c;
+        }
+        .notice-zone .notice-content a:hover {
+            color: #0d4a73;
+            border-bottom-style: solid;
+        }
+
+        /* 相关信息区 — FAQ 摘要卡片式 */
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .info-box {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.6rem 1.8rem;
+            flex: 1 1 240px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e6edf5;
+        }
+        .info-box h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0b253c;
+        }
+        .info-box p, .info-box li {
+            font-size: 0.92rem;
+            color: #31465b;
+        }
+        .info-box ul {
+            padding-left: 1rem;
+            margin-top: 0.3rem;
+        }
+        .info-box li {
+            margin-bottom: 0.25rem;
+        }
+        .faq-item {
+            border-bottom: 1px dashed #dce6f0;
+            padding: 0.5rem 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #1c3f5e;
+        }
+        .faq-item .a {
+            color: #3e556d;
+            margin-top: 0.1rem;
+            font-size: 0.9rem;
+        }
+        .link-em {
+            color: #1a6b9c;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #aac3db;
+        }
+
+        hr {
+            margin: 2.5rem 0 1.5rem;
+            border: none;
+            border-top: 1px solid #dce4ee;
+        }
+
+        footer {
+            text-align: center;
+            color: #6a7e94;
+            font-size: 0.85rem;
+            padding: 1rem 0 2.5rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .intro-grid { grid-template-columns: 1fr; }
+            .notice-zone { flex-direction: column; align-items: flex-start; }
+            .container { padding: 0 1rem 3rem; }
+            .card { padding: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 3rem 1rem 4rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .info-box { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>知识库 · 稳定入口</h1>
+        <p>面向信息查阅与平台导航，提供关于 ng体育 的结构化说明、使用场景及常见疑问摘要。</p>
+        <span class="badge">⚡ 持续维护 · 索引页</span>
+    </header>
+
+    <main class="container">
+
+        <!-- 说明区：目录感卡片网格 -->
+        <div class="intro-grid">
+            <div class="card">
+                <h3>📋 平台概览</h3>
+                <p>本页面作为知识库入口，集中说明 <a href="https://web-ngsports.com" class="link-em">ng体育</a> 所涉及的内容方向与功能边界。以下信息均基于公开资料整理，供使用者快速了解框架。</p>
+                <ul>
+                    <li>体育资讯与赛事动态</li>
+                    <li>数据查询与分类导航</li>
+                    <li>社区讨论与信息聚合</li>
+                </ul>
+                <span class="tag">信息索引</span>
+            </div>
+            <div class="card">
+                <h3>🧭 使用场景</h3>
+                <p>日常浏览、信息比对、关注特定体育项目或联赛的用户，可将 <a href="https://web-ngsports.com">ng体育</a> 作为参考渠道之一。建议结合多方来源交叉验证。</p>
+                <ul>
+                    <li>赛前资讯与背景查阅</li>
+                    <li>赛后数据回顾与整理</li>
+                    <li>体育文化及知识延伸</li>
+                </ul>
+                <span class="tag">适用参考</span>
+            </div>
+        </div>
+
+        <!-- 提示区 (强调色链接) -->
+        <div class="notice-zone">
+            <div class="icon-symbol">📌</div>
+            <div class="notice-content">
+                <strong>提示</strong> — 本索引页为静态介绍，实际内容及交互功能请通过 <a href="https://web-ngsports.com">ng体育</a> 主站体验。所有链接均指向平台自身，不包含第三方跳转。
+            </div>
+        </div>
+
+        <!-- 相关信息区：FAQ 摘要 + 附加说明 -->
+        <section>
+            <div class="info-section">
+                <div class="info-box">
+                    <h4>❓ 常见问题摘要</h4>
+                    <div class="faq-item">
+                        <div class="q">如何获取最新赛事日程？</div>
+                        <div class="a">登录 <a href="https://web-ngsports.com">ng体育</a> 后可通过顶部导航栏进入「赛程」模块，支持按日期、联赛筛选。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="q">是否支持多语言显示？</div>
+                        <div class="a">目前界面以中文为主，部分数据区域保留英文缩写。后续更新请留意平台公告。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="q">数据更新频率如何？</div>
+                        <div class="a">常规赛事数据在结束后30分钟内同步，重大赛事实时推送。具体视合作数据源而定。</div>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <h4>🔗 相关信息</h4>
+                    <ul>
+                        <li>平台内容涵盖足球、篮球、网球等主流项目</li>
+                        <li>社区板块需注册后可参与讨论</li>
+                        <li>建议使用现代浏览器（Chrome / Edge / Safari）获得完整体验</li>
+                        <li>如遇访问问题，可先检查网络或尝试刷新页面</li>
+                    </ul>
+                    <p style="margin-top: 0.8rem;">关于更细化的功能说明，请直接前往 <a href="https://web-ngsports.com">ng体育</a> 内对应帮助页面。</p>
+                </div>
+                <div class="info-box">
+                    <h4>📘 目录结构简述</h4>
+                    <p>主站采用扁平化信息架构：首页 → 赛程 / 数据 / 社区 / 知识库。本页作为知识库的静态入口，便于新访客快速定位。</p>
+                    <p style="margin-top: 0.5rem;">后续可能增加版本日志、使用指南等子页面，届时会更新本索引。</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- 底部区域：补充说明，保持自然语气 -->
+        <div style="background: #ffffff; border-radius: 18px; padding: 1.5rem 2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.02);">
+            <p style="font-size: 0.96rem; color: #2b4058;"><strong>关于本页</strong> — 这份索引页旨在提供关于 <a href="https://web-ngsports.com">ng体育</a> 的客观说明，不构成任何投资、博彩或医疗建议。所有内容均基于平台公开信息整理，请理性看待。如发现描述与实际情况有出入，欢迎通过平台内反馈渠道指正。</p>
+            <p style="font-size: 0.9rem; color: #5b728a; margin-top: 0.5rem;">版本 2025.04 · 静态页仅用于信息归纳，交互功能以主站为准。</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <span>知识库入口 · ng体育 说明页</span>
+    </footer>
+
+</body>
+</html>
