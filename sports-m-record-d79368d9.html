@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 – 信息卡片介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e2a36;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* 主视觉卡片 — 简约干净 */
+    .hero {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
+      padding: 3rem 2.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e6eaef;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0a1628;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #4a5a6e;
+      border-left: 4px solid #3b82f6;
+      padding-left: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 1rem;
+      color: #2c3a4c;
+    }
+
+    /* 用途 / 功能卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.75rem 1.5rem;
+      border: 1px solid #e3e9f0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease, transform 0.15s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+      transform: translateY(-2px);
+    }
+
+    .card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #0c1b2e;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #3b4b5e;
+      margin-bottom: 0.25rem;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #eff6ff;
+      color: #2563eb;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.15rem 0.6rem;
+      border-radius: 20px;
+      margin-top: 0.5rem;
+    }
+
+    /* 适合人群 + 引用卡片，双栏 */
+    .double-col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .col-card {
+      flex: 1 1 280px;
+      background: white;
+      border-radius: 20px;
+      padding: 1.75rem 1.5rem;
+      border: 1px solid #e3e9f0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .col-card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #0b1a2a;
+      border-bottom: 2px solid #dce4ed;
+      padding-bottom: 0.5rem;
+    }
+
+    .col-card ul {
+      padding-left: 1.2rem;
+      color: #2c3a4c;
+    }
+
+    .col-card li {
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .col-card .highlight {
+      background: #f8fafe;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-left: 4px solid #3b82f6;
+      font-size: 0.95rem;
+      color: #1f3347;
+    }
+
+    /* 自然链接段落 */
+    .link-section {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem 2rem;
+      border: 1px solid #e0e7ef;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      margin-bottom: 2rem;
+    }
+
+    .link-section p {
+      font-size: 1rem;
+      color: #253544;
+      margin-bottom: 1rem;
+    }
+
+    .link-section a {
+      color: #1d4ed8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .link-section a:hover {
+      color: #0f3b9e;
+      background: #eaf2fe;
+      text-decoration: none;
+      border-radius: 4px;
+      padding: 0 2px;
+    }
+
+    .link-section .meta-note {
+      font-size: 0.9rem;
+      color: #5a6e84;
+      border-top: 1px solid #eaeef4;
+      padding-top: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* FAQ 摘要卡片 */
+    .faq-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.75rem 2rem;
+      border: 1px solid #e3e9f0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-card h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0c1b2e;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed #dce3ec;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: #13273d;
+    }
+
+    .faq-a {
+      font-size: 0.92rem;
+      color: #3f536a;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6a7c91;
+      border-top: 1px solid #dce2ec;
+      padding-top: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 2rem 1.25rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .double-col {
+        flex-direction: column;
+      }
+      .link-section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- 主视觉区域 -->
+    <div class="hero">
+      <h1>爱游戏 · 体育与娱乐信息站点</h1>
+      <div class="sub">面向体育爱好者与休闲用户的整合型内容入口</div>
+      <p>
+        <strong>爱游戏</strong> 是一个以体育赛事动态、运动文化及休闲娱乐信息为核心的轻量级网站。站点聚焦于提供简洁可读的体育资讯与实用参考，不涉及博彩、不诱导充值，适合日常快速浏览。
+      </p>
+    </div>
+
+    <!-- 信息卡片：用途 / 功能 -->
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3>赛事资讯聚合</h3>
+        <p>覆盖主流联赛、杯赛及综合性赛事，提供赛果、积分、赛程等基础数据摘要。</p>
+        <span class="tag">数据参考</span>
+      </div>
+      <div class="card">
+        <div class="icon">🧭</div>
+        <h3>运动文化笔记</h3>
+        <p>从规则科普到运动历史片段，帮助用户快速理解不同项目的背景与看点。</p>
+        <span class="tag">轻阅读</span>
+      </div>
+      <div class="card">
+        <div class="icon">🔗</div>
+        <h3>导航与索引</h3>
+        <p>整合体育相关的公开资源、官方媒体及实用工具链接，便于延伸探索。</p>
+        <span class="tag">索引</span>
+      </div>
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>社区氛围</h3>
+        <p>用户可围绕赛事与运动话题进行讨论，形成有活力的交流环境。</p>
+        <span class="tag">讨论</span>
+      </div>
+    </div>
+
+    <!-- 双栏：适合人群 + 可信说明 -->
+    <div class="double-col">
+      <div class="col-card">
+        <h2>适合哪些人</h2>
+        <ul>
+          <li>日常关注体育新闻、赛程的普通爱好者</li>
+          <li>希望快速查阅球队/选手数据的轻度用户</li>
+          <li>对运动文化、赛事历史感兴趣的内容型读者</li>
+          <li>寻找体育类信息导航与讨论氛围的访客</li>
+        </ul>
+        <div class="highlight">
+          ⚡ 无需注册即可浏览大部分内容，信息呈现直接，无过度商业化干扰。
+        </div>
+      </div>
+      <div class="col-card">
+        <h2>可信说明</h2>
+        <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">
+          本站内容均基于公开赛事数据与运动知识汇编，不提供博彩赔率、不代理投注、不保证绝对实时性。所有引用均标注来源，信息仅供参考。
+        </p>
+        <p style="font-size: 0.9rem; color: #3f536a;">
+          ❖ 非官方机构，不隶属任何联赛或俱乐部。<br>
+          ❖ 内容编辑团队保持中立，不预设立场。
+        </p>
+      </div>
+    </div>
+
+    <!-- 自然链接段落 (嵌入 a 标签) -->
+    <div class="link-section">
+      <p>
+        如果你正在寻找一个信息密度适中、界面清爽的体育类信息页，不妨将 <a href="https://sports-m-igame.com">爱游戏</a> 加入书签。站内内容涵盖足球、篮球、网球等常见项目，同时兼顾电子竞技与户外运动资讯，适合作为日常快速参考。
+      </p>
+      <p>
+        无论你是想确认今晚的比赛时间，还是想回顾某支球队的近期战绩，<a href="https://sports-m-igame.com">爱游戏</a> 都提供了一种简洁的获取途径。站点每日更新，信息结构清晰，也适合在移动端使用。
+      </p>
+      <div class="meta-note">
+        📌 本页为介绍页，实际功能与内容请直接访问上述链接体验。
+      </div>
+    </div>
+
+    <!-- FAQ 摘要卡片 (非完整FAQ，仅摘要) -->
+    <div class="faq-card">
+      <h2>常见疑问摘要</h2>
+      <div class="faq-item">
+        <span class="faq-q">网站是否需要付费？</span>
+        <span class="faq-a">不收费，所有公开内容均免费阅览，无隐藏订阅。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">数据更新频率如何？</span>
+        <span class="faq-a">主要联赛/赛事每日更新，次级联赛视数据源而定，通常为 24 小时内同步。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">是否提供深度分析或预测？</span>
+        <span class="faq-a">不提供。网站以事实性信息与知识科普为主，不涉及盘口、预测或任何形式的建议。</span>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+      <span>爱游戏 · 信息卡片页 · 仅供介绍参考</span>
+    </div>
+
+  </div>
+</body>
+</html>
