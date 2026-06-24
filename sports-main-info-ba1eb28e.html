@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 体育专题介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f6f8fb;
+      color: #1e293b;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 深色头图 · 杂志感 */
+    .hero {
+      background: linear-gradient(145deg, #0b1727 0%, #142c3c 100%);
+      color: #eaf0f6;
+      padding: 4rem 2rem 3.2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #ffb347, #ff8c42, #ffb347);
+      opacity: 0.55;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 6vw, 3.6rem);
+      font-weight: 550;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .subline {
+      font-size: 1.2rem;
+      font-weight: 300;
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0.6rem auto 0;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      margin-top: 1.2rem;
+      border: 1px solid rgba(255, 183, 71, 0.5);
+      padding: 0.2rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      color: #fcd9a8;
+      background: rgba(255, 183, 71, 0.08);
+    }
+
+    /* 主内容区 */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.8rem 1.8rem 3rem;
+    }
+
+    /* 专题介绍卡片 */
+    .section-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .section-card h2 {
+      font-size: 1.5rem;
+      font-weight: 520;
+      border-left: 5px solid #ff8c42;
+      padding-left: 1rem;
+      margin-bottom: 1.2rem;
+      color: #1e2a3a;
+    }
+
+    .section-card p {
+      margin-bottom: 1.1rem;
+    }
+
+    .section-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1.4rem 0 0.2rem;
+    }
+
+    .feature-item {
+      background: #f2f6fd;
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      flex: 1 1 180px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .feature-item::before {
+      content: "▹";
+      color: #ff8c42;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    /* 链接强调色 */
+    a {
+      color: #d6701a;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s, background 0.15s;
+      border-bottom: 1px dotted transparent;
+    }
+
+    a:hover {
+      color: #b2590f;
+      border-bottom-color: #b2590f;
+    }
+
+    .faq-summary {
+      background: #f9fafc;
+      border-radius: 18px;
+      padding: 1.5rem 2rem;
+      margin-top: 1rem;
+    }
+
+    .faq-summary dt {
+      font-weight: 600;
+      margin: 0.8rem 0 0.2rem;
+      color: #1f2937;
+    }
+
+    .faq-summary dd {
+      margin-left: 0.2rem;
+      color: #475569;
+      font-size: 0.98rem;
+      border-left: 2px solid #ffb347;
+      padding-left: 1rem;
+    }
+
+    .faq-summary dd:last-of-type {
+      margin-bottom: 0.4rem;
+    }
+
+    .tip-footer {
+      margin-top: 3rem;
+      padding: 1.8rem 0 0.5rem;
+      border-top: 1px solid #dce3ed;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+
+    .tip-footer span {
+      display: inline-block;
+      background: #edf2f9;
+      padding: 0.2rem 1.4rem;
+      border-radius: 28px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 2.8rem 1.2rem 2.4rem;
+      }
+      .section-card {
+        padding: 1.4rem 1.2rem;
+      }
+      .feature-item {
+        flex: 1 1 100%;
+      }
+      .faq-summary {
+        padding: 1rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>爱游戏 · 体育指南</h1>
+  <p class="subline">从运动资讯到社区分享，一个专注体育内容的站点</p>
+  <span class="badge">杂志专题 · 背景与介绍</span>
+</header>
+
+<main class="container">
+
+  <!-- 第一段：站点背景 -->
+  <section class="section-card">
+    <h2>站点背景与定位</h2>
+    <p>「爱游戏」是一个面向体育爱好者的信息聚合与交流平台。它的定位并非传统的赛事直播门户，而是更侧重运动科普、赛事回顾、训练心得以及装备讨论。站点内容涵盖足球、篮球、网球、跑步、骑行等多领域，编采团队与资深运动爱好者合作，持续输出原创与编译内容。</p>
+    <p>网站的设计风格简洁，信息层级清晰，适合希望快速了解体育动态、技术分析或赛季背景的用户。作为体育内容社区，爱游戏同时提供讨论区与专栏投稿功能，鼓励理性交流与经验分享。</p>
+  </section>
+
+  <!-- 第二段：可信说明 + 特点 -->
+  <section class="section-card">
+    <h2>可信度与内容特点</h2>
+    <p>为了保证信息质量，<a href="https://sports-main-igame.com">爱游戏</a>的内容团队会参考多方来源（包括体育协会公告、俱乐部官方渠道、专业媒体及运动员采访），并在文中注明出处或引用链接。每个专题页面均设有责任编辑署名，方便读者追溯。</p>
+    <div class="feature-grid">
+      <div class="feature-item">事实核查：关键数据与争议事件附参考来源</div>
+      <div class="feature-item">多视角分析：同一赛事提供战术、历史、数据三个维度</div>
+      <div class="feature-item">社区规范：鼓励理性讨论，反对虚假信息与人身攻击</div>
+    </div>
+    <p style="margin-top: 0.8rem;">此外，站内设有「运动百科」板块，对常见规则、术语、训练动作进行图解说明。无论是入门爱好者还是资深球迷，都能找到有价值的内容。</p>
+  </section>
+
+  <!-- 第三段：使用场景与 FAQ 摘要 -->
+  <section class="section-card">
+    <h2>常见使用场景 · FAQ 摘要</h2>
+    <p>很多用户会在赛季前后访问爱游戏，了解球队名单、转会传闻、伤病更新；也有读者在准备运动比赛或健身计划时，查阅技术文章与训练计划。以下是站内一些常见疑问的简要整理：</p>
+    <dl class="faq-summary">
+      <dt>内容更新时间固定吗？</dt>
+      <dd>常规栏目每周更新2–4次，重大赛事期间会加推快讯与评论。</dd>
+      <dt>能否参与内容创作？</dt>
+      <dd>社区开放投稿，但需通过编辑基础审核；专栏作者可申请认证标识。</dd>
+      <dt>是否有手机端专用版本？</dt>
+      <dd>网站采用响应式设计，移动端浏览体验经过专门适配，无需额外下载应用。</dd>
+      <dt>如何反馈内容错误？</dt>
+      <dd>每篇文章底部设有「报告问题」入口，编辑团队通常会在1个工作日内回复。</dd>
+    </dl>
+  </section>
+
+  <!-- 页尾提示 -->
+  <div class="tip-footer">
+    <span>若希望获取体育资讯、讨论或工具型内容，可随时浏览爱游戏</span>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">本页为专题介绍 · 内容仅供参考，具体以网站实际展示为准</p>
+  </div>
+
+</main>
+
+</body>
+</html>
